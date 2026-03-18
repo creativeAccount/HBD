@@ -1,10 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Second Page</title>
+  <title>Cartita</title>
+  <link rel="stylesheet" href="style2.css" />
 </head>
 <body>
+  <main>
+    <!-- Main envelope container -->
+    <div class="container-letter">
+      <!-- Top flap of the envelope -->
+      <div class="cover"></div>
+
+      <!-- Animated heart shown when opening -->
+      <span class="heart">♥</span>
+
+      <!-- Letter content -->
+      <p class="paper" id="mainMessage">
+        En este día especial de amor y amistad, celebremos los lazos que nos unen.
+        Que la alegría y el cariño nos acompañen siempre. ¡Feliz día!
+      </p>
+
+      <!-- Bottom/body of the envelope -->
+      <div class="letter"></div>
+    </div>
+
+    <!-- Action buttons -->
+    <div class="options">
+      <button id="open">Abrir</button>
+      <button id="close">Cerrar</button>
+    </div>
+  </main>
+
+  <!-- Needed for the open/close interaction -->
+  <script src="script.js"></script>
 </body>
 </html>
