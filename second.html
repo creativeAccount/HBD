@@ -1,39 +1,41 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <!-- Configuración básica del documento -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Título que aparece en la pestaña del navegador -->
   <title>Cartita</title>
+
+  <!-- Enlace al archivo de estilos -->
   <link rel="stylesheet" href="style2.css" />
 </head>
 <body>
   <main>
-    <!-- Main envelope container -->
+    <!-- Contenedor principal del sobre y la hoja -->
     <div class="container-letter">
-      <!-- Top flap of the envelope -->
+      <!-- Solapa superior del sobre -->
       <div class="cover"></div>
 
-      <!-- Animated heart shown when opening -->
-      <span class="heart">♥</span>
-
-      <!-- Letter content -->
+      <!-- Hoja de la carta con el mensaje -->
       <p class="paper" id="mainMessage">
         En este día especial de amor y amistad, celebremos los lazos que nos unen.
         Que la alegría y el cariño nos acompañen siempre. ¡Feliz día!
       </p>
 
-      <!-- Bottom/body of the envelope -->
+      <!-- Parte inferior del sobre -->
       <div class="letter"></div>
     </div>
 
-    <!-- Action buttons -->
+    <!-- Botones para abrir y cerrar la carta -->
     <div class="options">
       <button id="open">Abrir</button>
       <button id="close">Cerrar</button>
     </div>
   </main>
 
-  <!-- Needed for the open/close interaction -->
+  <!-- Archivo JavaScript para la interacción -->
   <script src="script.js"></script>
 </body>
 </html>

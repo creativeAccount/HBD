@@ -1,17 +1,21 @@
 /* =========================
-   Basic reset
+   Reinicio básico
    ========================= */
+
+/* Hace que todos los elementos hereden la fuente y evita problemas de ancho mínimo */
 * {
   min-width: 0;
   font: inherit;
 }
 
+/* Incluye bordes y padding dentro del tamaño total del elemento */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
+/* Hace responsivos los elementos multimedia */
 img,
 video,
 svg {
@@ -20,152 +24,180 @@ svg {
   max-width: 100%;
 }
 
+/* Elimina el margen por defecto y asegura altura completa de pantalla */
 body {
   margin: 0;
   min-height: 100dvh;
 }
 
+/* Mejora la distribución visual de títulos */
 h1,
 h2,
 h3 {
   text-wrap: balance;
 }
 
+/* Mejora la lectura de párrafos */
 p {
   text-wrap: pretty;
 }
 
 /* =========================
-   Main page styles
+   Estilos generales
    ========================= */
+
+/* Fondo y tipografía principal */
 body {
   background-color: #fad7df;
   font-family: system-ui, sans-serif;
 }
 
+/* Centra el contenido, pero un poco más abajo */
 main {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  gap: 3rem;
-  justify-content: center;
+  justify-content: flex-start; /* ya no lo centra exacto verticalmente */
   align-items: center;
-  height: 100vh;
+  gap: 3rem;
+  padding-top: 18rem; /* baja el sobre y los botones */
 }
 
-/* Wrapper of the envelope */
+/* =========================
+   Contenedor del sobre
+   ========================= */
+
+/* Ahora el contenedor tiene el mismo ancho y alto real del sobre */
 .container-letter {
   position: relative;
+  width: 600px;
+  height: 340px;
+  perspective: 1000px;
 }
 
-/* Top flap made with CSS borders */
+/* Solapa superior del sobre */
 .cover {
   position: absolute;
-  border-left: 200px solid transparent;
-  border-right: 200px solid transparent;
-  border-top: 100px solid #fe3334;
-  border-bottom: 100px solid transparent;
-  transition: transform 0.75s;
-  transform-origin: top;
+  top: 0;
+  left: 0;
+  z-index: 3;
+
+  border-left: 300px solid transparent;
+  border-right: 300px solid transparent;
+  border-top: 170px solid #e05a5a;
+  border-bottom: 170px solid transparent;
+
+  transform-origin: top center;
+  transition: transform 0.75s ease;
 }
 
-/* White paper inside the envelope */
+/* Hoja de la carta */
 .paper {
   position: absolute;
-  padding: 1.5rem;
-  line-height: 2rem;
-  right: 5px;
-  z-index: -1;
-  background: white;
-  width: 390px;
-  height: 180px;
-  transition: all 0.75s;
+  top: 20px;
+  left: 10px;
+  z-index: 1;
+
+  width: 580px;   /* casi del tamaño total del sobre */
+  height: 300px;  /* más grande */
+  padding: 2rem;
+  background-color: white;
+  line-height: 1.8;
+  text-align: center;
+  font-size: 1.2rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-/* Bottom/body of the envelope */
+/* Parte inferior del sobre */
 .letter {
-  border-left: 200px solid #ff989e;
-  border-right: 200px solid #ff989e;
-  border-top: 100px solid transparent;
-  border-bottom: 100px solid #ff858a;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+
+  border-left: 300px solid #ff989e;
+  border-right: 300px solid #ff989e;
+  border-top: 170px solid transparent;
+  border-bottom: 170px solid #ff858a;
 }
 
-/* Button row */
+/* =========================
+   Botones
+   ========================= */
+
+/* Contenedor de botones */
 .options {
   display: flex;
-  gap: 5rem;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  width: 600px; /* mismo ancho que el sobre para que queden centrados */
+  padding-top: 1rem;
 }
 
+/* Estilo base de botones */
 .options button {
   color: #ff3234;
   font-weight: 600;
-  border-radius: 3px;
+  font-size: 1rem;
+  border-radius: 6px;
   background: #fad7df;
-  padding: 0.5rem 1rem;
+  padding: 0.8rem 1.6rem;
   border: 1px solid #fe3334;
   cursor: pointer;
 }
 
-.options button:hover {
+/* Efecto hover en botones activos */
+.options button:hover:not(:disabled) {
   background: #ff989e;
   color: white;
 }
 
+/* Apariencia cuando un botón está deshabilitado */
+.options button:disabled {
+  opacity: 0.5;
+}
+
 /* =========================
-   Animation helper classes
+   Clases de animación
    ========================= */
 
-/* Rotates the top flap upward */
+/* Abre la solapa del sobre */
 .open-cover {
   transform: rotateX(180deg);
 }
 
-/* Slides the paper out */
+/* Animación de salida de la hoja */
 .open-paper {
-  animation: openPaper 0.5s forwards;
+  animation: openPaper 0.9s forwards ease;
 }
 
+/* Hoja saliendo y quedando arriba */
 @keyframes openPaper {
   0% {
-    top: 0;
+    transform: translateY(0);
   }
   100% {
-    top: -120px;
+    transform: translateY(-260px);
   }
 }
 
-/* Slides the paper back in */
+/* Animación para volver a meter la hoja dentro del sobre */
 .close-paper {
-  animation: closePaper 0.5s forwards;
+  animation: closePaper 0.9s forwards ease;
 }
 
+/* Hoja bajando hasta volver a su posición inicial */
 @keyframes closePaper {
   0% {
-    top: -120px;
+    transform: translateY(-260px);
   }
   100% {
-    top: 0;
-  }
-}
-
-/* Heart animation */
-.heart {
-  display: none;
-  position: absolute;
-  top: 25%;
-  left: 46.5%;
-  margin: auto;
-  font-size: 3rem;
-  color: #fe3334;
-  animation: crecer 1s forwards;
-}
-
-@keyframes crecer {
-  0% {
-    scale: 1;
-    opacity: 1;
-  }
-  100% {
-    scale: 3;
-    opacity: 0;
+    transform: translateY(0);
   }
 }
