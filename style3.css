@@ -1,0 +1,113 @@
+/* =========================
+   Reinicio básico
+   ========================= */
+/* Hace que todos los elementos hereden la fuente y evita problemas de ancho mínimo */
+* {
+  min-width: 0;
+  font: inherit;
+}   
+/* Incluye bordes y padding dentro del tamaño total del elemento */
+*,  
+*::before,
+*::after {
+  box-sizing: border-box;
+}   
+/* Hace responsivos los elementos multimedia */
+img,
+video,
+svg {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+/* Elimina el margen por defecto y asegura altura completa de pantalla */
+body {
+  margin: 0;
+  min-height: 100dvh;
+}
+/* Mejora la distribución visual de títulos */
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+/* Mejora la lectura de párrafos */
+p {
+  text-wrap: pretty;
+}
+/* =========================
+   Estilos generales
+   ========================= */
+/* Fondo y tipografía principal */
+body {
+   background: linear-gradient(180deg, #9BA79C 15%, #2e3d28 100%);
+  font-family: system-ui, sans-serif;
+}
+/* Centra el contenido, pero un poco más abajo */
+main {
+  min-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* ya no lo centra exacto verticalmente */
+  align-items: center;
+  gap: 3rem;
+  padding-top: 18rem; /* baja el sobre y los botones */
+}
+
+/* Estilos para los botones */
+.button {
+   font-family: "Cormorant Garamond", serif;
+   border-radius: 6px;
+   background: #c7dbbd;
+   padding: 0.8rem 1.6rem;
+   border: 1px solid #c7dbbd;
+   cursor: pointer;
+}
+.button:hover {
+  background: #b0c9a8;
+  border-color: #b0c9a8;
+}
+
+
+/* =========================
+   Encabezado
+   ========================= */
+
+.site-header {
+  width: 100%;
+  background: linear-gradient(180deg, #9BA79C 15%, #899784 100%);
+  backdrop-filter: blur(8px);
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav {
+  max-width: 1500px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.6rem;
+  font-weight: 500;
+  font-family: "Cormorant Garamond", serif;
+  transition: 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #b5cfa0;
+}
