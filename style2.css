@@ -48,13 +48,13 @@ p {
 
 /* Fondo y tipografía principal */
 body {
-  background-color: #fad7df;
+   background: linear-gradient(180deg, #9BA79C 15%, #2e3d28 100%);
   font-family: system-ui, sans-serif;
 }
 
 /* Centra el contenido, pero un poco más abajo */
 main {
-  min-height: 100vh;
+  min-height: 92vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start; /* ya no lo centra exacto verticalmente */
@@ -75,20 +75,41 @@ main {
   perspective: 1000px;
 }
 
-/* Solapa superior del sobre */
-.cover {
+.container-letter::before {
+  content: "";
   position: absolute;
-  top: 0;
+  top: 170px;
   left: 0;
-  z-index: 3;
+  width: 600px;
+  height: 170px;
+  background: #93c47d;
+  border-top: 4px solid #7d8d76;
+  z-index: 0;
+}
 
-  border-left: 300px solid transparent;
-  border-right: 300px solid transparent;
-  border-top: 170px solid #e05a5a;
-  border-bottom: 170px solid transparent;
+/* fondo del sobre */
+.fondo {
+  position: absolute;
+  top: 0px;
+  left: 10px;
+  z-index: 1;
 
-  transform-origin: top center;
-  transition: transform 0.75s ease;
+  width: 580px;
+  height: 300px;
+  padding: 2.5rem;
+
+  font-size: 1.07rem;
+  line-height: 1.5;
+  text-align: left;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  
+  background: #759463;
+  border-top: 0px solid #7d8d76;
+  z-index: 1;
 }
 
 /* Hoja de la carta */
@@ -96,21 +117,36 @@ main {
   position: absolute;
   top: 20px;
   left: 10px;
-  z-index: 1;
+  z-index: 2;
 
-  width: 580px;   /* casi del tamaño total del sobre */
-  height: 300px;  /* más grande */
+  width: 580px;
+  height: 300px;
   padding: 2rem;
   background-color: white;
-  line-height: 1.8;
-  text-align: center;
-  font-size: 1.2rem;
+
+  font-size: 1.07rem;
+  line-height: 1.5;
+  text-align: left;
 
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
 
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px white;
+}
+
+.paper-title {
+  font-family: "Cormorant Garamond", serif;
+  margin: -10px 0 1rem 0; /* space below the title */
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.paper p {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.1rem;
+  margin: 0 0 0.4rem 0;
 }
 
 /* Parte inferior del sobre */
@@ -118,13 +154,30 @@ main {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 2;
+  z-index: 3;
 
-  border-left: 300px solid #ff989e;
-  border-right: 300px solid #ff989e;
+  border-left: 300px solid #93c47d;
+  border-right: 300px solid #93c47d;
   border-top: 170px solid transparent;
-  border-bottom: 170px solid #ff858a;
+  border-bottom: 170px solid #90bd79;
 }
+
+/* Solapa superior del sobre */
+.cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 4;
+
+  border-left: 300px solid transparent;
+  border-right: 300px solid transparent;
+  border-top: 170px solid #80aa6d;
+  border-bottom: 170px solid transparent;
+
+  transform-origin: top center;
+  transition: transform 0.75s ease;
+}
+
 
 /* =========================
    Botones
@@ -135,33 +188,37 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 3rem;
+  gap: 5rem;
+  height: 20px;
   width: 600px; /* mismo ancho que el sobre para que queden centrados */
-  padding-top: 1rem;
+  padding-top: 0rem;
 }
 
 /* Estilo base de botones */
 .options button {
-  color: #ff3234;
+  color: #57724b;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 1.2rem;
+  font-family: "Cormorant Garamond", serif;
   border-radius: 6px;
-  background: #fad7df;
+  background: #c7dbbd;
   padding: 0.8rem 1.6rem;
-  border: 1px solid #fe3334;
+  border: 1px solid #c7dbbd;
   cursor: pointer;
 }
 
 /* Efecto hover en botones activos */
 .options button:hover:not(:disabled) {
-  background: #ff989e;
+  background: #8eaa80;
   color: white;
+  border: 1px solid #8eaa80;
 }
 
 /* Apariencia cuando un botón está deshabilitado */
 .options button:disabled {
   opacity: 0.5;
 }
+
 
 /* =========================
    Clases de animación
@@ -183,7 +240,7 @@ main {
     transform: translateY(0);
   }
   100% {
-    transform: translateY(-260px);
+    transform: translateY(-300px);
   }
 }
 
@@ -200,4 +257,47 @@ main {
   100% {
     transform: translateY(0);
   }
+}
+
+/* =========================
+   Encabezado
+   ========================= */
+
+.site-header {
+  width: 100%;
+  background: linear-gradient(180deg, #9BA79C 15%, #899784 100%);
+  backdrop-filter: blur(8px);
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav {
+  max-width: 1500px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.6rem;
+  font-weight: 500;
+  font-family: "Cormorant Garamond", serif;
+  transition: 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #b5cfa0;
 }
