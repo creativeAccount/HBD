@@ -4,16 +4,33 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  min-height: 100%;
+}
+
 body {
   min-height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;   /* not center */
+  align-items: stretch;          /* allows footer full width */
   background: linear-gradient(180deg, #9BA79C 15%, #2e3d28 100%);
   overflow-x: hidden;
   font-family: Arial, sans-serif;
-  padding: 24px;
 }
+
+.layout {
+  width: min(1100px, calc(100% - 48px));
+  margin-inline: auto;
+  flex: 1;                       /* fills remaining height */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+  padding: 24px 0 120px;         /* space for fixed button */
+}
+
 .message {
   color: #ffffff;
   display: flex;
@@ -45,14 +62,6 @@ body {
   font-size: clamp(1.8rem, 4vw, 3rem);
   margin-top: 30px;
   margin-left: 190px;
-}
-
-.layout {
-  width: min(1100px, 100%);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 40px;
 }
 
 .scene {
@@ -310,24 +319,6 @@ body {
   }
 }
 
-@media (max-width: 900px) {
-  .layout {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .message {
-    align-items: center;
-  }
-
-  .love {
-    margin-left: 0;
-  }
-
-  .scene {
-    transform: translateY(0);
-  }
-}
 .btn_second_page {
   position: fixed;
   bottom: 70px;
@@ -391,9 +382,45 @@ body {
   font-family: "Segoe UI Symbol", "Apple Symbols", "Arial Unicode MS", Arial, sans-serif;
 }
 
+.site-footer {
+  width: 100%;
+  margin-top: auto;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 20px;
+  background: transparent;
+  backdrop-filter: blur(8px);
+  padding: 0.75rem 2rem;
+  text-align: right;
+  flex-shrink: 0;
+  color: white;
+}
+
 @media (max-width: 900px) {
+  .layout {
+    width: min(1100px, calc(100% - 32px));
+    flex-direction: column;
+    text-align: center;
+    padding-bottom: 110px;
+  }
+
+  .message {
+    align-items: center;
+    text-align: center;
+    margin-left: 0;
+  }
+
+  .happy,
+  .birthday,
+  .love {
+    margin-left: 0;
+  }
+
+  .scene {
+    transform: translateY(0);
+  }
+
   .btn_second_page {
-    bottom: 40px;
+    bottom: 70px;
     width: 140px;
     height: 54px;
   }
