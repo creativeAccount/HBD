@@ -312,7 +312,7 @@ main {
 
 @media (max-width: 430px) {
   main {
-    padding-top: calc(9rem + env(safe-area-inset-top));
+    padding-top: calc(18rem + env(safe-area-inset-top));
     gap: 1.5rem;
   }
 
