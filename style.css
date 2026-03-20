@@ -498,6 +498,10 @@ body {
     height: 220px;
   }
 
+  .btn_second_page {
+    font-size: 14px;
+  }
+  
   .cake {
     transform: scale(0.72);
   }
