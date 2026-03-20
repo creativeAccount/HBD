@@ -156,7 +156,7 @@ main {
 @media (max-width: 768px) {
   .nav {
     flex-direction: column;
-    justify-content: center;
+    justify-content: right;
   }
 
   .nav-links {
