@@ -26,7 +26,7 @@
 
   /* Paper sizing */
   --paper-w: calc(var(--envelope-w) - (var(--side-offset) * 2));
-  --paper-h: calc(var(--envelope-h) * 0.9411764706);
+  --paper-h: calc(var(--envelope-h) * 0.9);
   --paper-top: calc(var(--envelope-h) * 0.0588235294);
   --paper-open-y: calc(var(--envelope-h) * -0.74);
 
@@ -115,6 +115,7 @@ p {
 
 main {
   width: 100%;
+  margin-top: 250px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
