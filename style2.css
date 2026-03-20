@@ -328,7 +328,7 @@ main {
     --envelope-w: calc(100vw - 1.5rem);
     --paper-pad: clamp(0.85rem, 3.2vw, 1.1rem);
     --paper-title-size: clamp(1.05rem, 0.98rem + 1vw, 1.25rem);
-    --paper-text-size: clamp(0.75rem, 0.75rem + 0.21vw, 0.92rem);
+    --paper-text-size: clamp(0.4rem, 0.4rem + 0.01vw, 0.6rem);
     --paper-open-y: calc(var(--envelope-h) * -0.8);
     --paper-h: calc(var(--envelope-h) * 0.9);
   }
