@@ -329,7 +329,7 @@ main {
 
   @keyframes openPaperMobile {
     0% {
-      transform: translateY(0);
+      transform: translateY(0.5rem);
     }
     100% {
       transform: translateY(calc(var(--envelope-h) * -0.68));
