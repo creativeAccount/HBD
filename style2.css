@@ -332,7 +332,7 @@ main {
       transform: translateY(0);
     }
     100% {
-      transform: translateY(calc(var(--envelope-h) * -0.68));
+      transform: translateY(calc(var(--envelope-h) * -0.8));
     }
   }
 }
