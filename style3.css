@@ -1,167 +1,169 @@
 /* =========================
-   Reinicio básico
+   Basic reset
    ========================= */
-/* Hace que todos los elementos hereden la fuente y evita problemas de ancho mínimo */
+
 * {
-    min-width: 0;
-    font: inherit;
+  min-width: 0;
+  font: inherit;
 }
 
-/* Incluye bordes y padding dentro del tamaño total del elemento */
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-/* Hace responsivos los elementos multimedia */
 img,
 video,
 svg {
-    display: block;
-    height: auto;
-    max-width: 100%;
+  display: block;
+  height: auto;
+  max-width: 100%;
 }
 
-/* Elimina el margen por defecto y asegura altura completa de pantalla */
 body {
-    margin: 0;
-    min-height: 100dvh;
+  margin: 0;
+  min-height: 100dvh;
+  background: linear-gradient(180deg, #9BA79C 15%, #2e3d28 100%);
+  font-family: system-ui, sans-serif;
+  overflow-x: hidden;
 }
 
-/* Mejora la distribución visual de títulos */
 h1,
 h2,
 h3 {
-    text-wrap: balance;
+  text-wrap: balance;
 }
 
-/* Mejora la lectura de párrafos */
 p {
-    text-wrap: pretty;
+  text-wrap: pretty;
 }
 
 /* =========================
-   Estilos generales
+   General layout
    ========================= */
-/* Fondo y tipografía principal */
-body {
-    background: linear-gradient(180deg, #9BA79C 15%, #2e3d28 100%);
-    font-family: system-ui, sans-serif;
-}
 
-/* Centra el contenido, pero un poco más abajo */
 main {
-    min-height: 92vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    /* ya no lo centra exacto verticalmente */
-    align-items: center;
-    gap: 3rem;
-    padding-top: 4rem;
-    /* baja el sobre y los botones */
+  min-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  padding: clamp(2.5rem, 6vw, 4rem) 1rem 3rem;
 }
 
-/* Estilos para los botones */
 .button {
-    font-family: "Cormorant Garamond", serif;
-    border-radius: 6px;
-    background: #c7dbbd;
-    padding: 0.8rem 1.6rem;
-    border: 1px solid #c7dbbd;
-    cursor: pointer;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(1rem, 2.8vw, 1.2rem);
+  border-radius: 6px;
+  background: #c7dbbd;
+  padding: 0.8rem 1.6rem;
+  border: 1px solid #c7dbbd;
+  cursor: pointer;
 }
 
 .button:hover {
-    background: #b0c9a8;
-    border-color: #b0c9a8;
+  background: #b0c9a8;
+  border-color: #b0c9a8;
 }
 
-
 /* =========================
-   Encabezado
+   Header
    ========================= */
 
 .site-header {
-    width: 100%;
-    background: linear-gradient(180deg, #9BA79C 15%, #899784 100%);
-    backdrop-filter: blur(8px);
-    padding: 1rem 2rem;
-    position: sticky;
-    top: 0;
-    z-index: 100;
+  width: 100%;
+  background: linear-gradient(180deg, #9BA79C 15%, #899784 100%);
+  backdrop-filter: blur(8px);
+  padding: 1rem clamp(1rem, 4vw, 2rem);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .nav {
-    max-width: 1500px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  max-width: 1500px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
 }
 
 .nav-links {
-    list-style: none;
-    display: flex;
-    gap: 2rem;
-    margin: 0;
-    padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(0.75rem, 3vw, 2rem);
+  margin: 0;
+  padding: 0;
 }
 
 .nav-links a {
-    text-decoration: none;
-    color: white;
-    font-size: 1.6rem;
-    font-weight: 500;
-    font-family: "Cormorant Garamond", serif;
-    transition: 0.3s ease;
+  text-decoration: none;
+  color: white;
+  font-size: clamp(1rem, 2.8vw, 1.6rem);
+  font-weight: 500;
+  font-family: "Cormorant Garamond", serif;
+  transition: 0.3s ease;
 }
 
 .nav-links a:hover {
-    color: #b5cfa0;
+  color: #b5cfa0;
 }
 
 /* =========================
-   Frases
+   Text blocks
    ========================= */
 
-.frase1 {
-    text-decoration: none;
-    color: white;
-    font-size: 2.5rem;
-    font-weight: 500;
-    font-family: "Cormorant Garamond", serif;
-    transition: 0.3s ease;
-    margin-block: 20px;
+.frase1,
+.frase2 {
+  text-decoration: none;
+  color: white;
+  font-size: clamp(1.5rem, 4.8vw, 2.5rem);
+  font-weight: 500;
+  font-family: "Cormorant Garamond", serif;
+  transition: 0.3s ease;
+  text-align: center;
 }
 
-.frase2 {
-    text-decoration: none;
-    color: white;
-    font-size: 2.5rem;
-    font-weight: 500;
-    font-family: "Cormorant Garamond", serif;
-    transition: 0.3s ease;
+.frase1 {
+  margin-block: 20px;
 }
 
 /* =========================
-   Fotos
+   Photo grid
    ========================= */
 
 .fotitos {
-    width: min(1300px, 500%);
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-    gap: 4rem;
-    padding-bottom: 0.5rem;
+  width: min(1200px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr));
+  gap: clamp(1rem, 4vw, 3rem);
+  padding-bottom: 0.5rem;
 }
 
 .foto {
-    width: 200%;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
-    display: block;
-    border-radius: 12px;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px;
+}
+
+@media (max-width: 768px) {
+  .nav {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .nav-links {
+    justify-content: center;
+  }
+
+  main {
+    padding-top: 2.5rem;
+  }
 }

@@ -1,21 +1,18 @@
 /* =========================
-   Reinicio básico
+   Basic reset
    ========================= */
 
-/* Hace que todos los elementos hereden la fuente y evita problemas de ancho mínimo */
 * {
   min-width: 0;
   font: inherit;
 }
 
-/* Incluye bordes y padding dentro del tamaño total del elemento */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-/* Hace responsivos los elementos multimedia */
 img,
 video,
 svg {
@@ -24,181 +21,164 @@ svg {
   max-width: 100%;
 }
 
-/* Elimina el margen por defecto y asegura altura completa de pantalla */
 body {
   margin: 0;
   min-height: 100dvh;
+  background: linear-gradient(180deg, #9BA79C 15%, #2e3d28 100%);
+  font-family: system-ui, sans-serif;
+  overflow-x: hidden;
 }
 
-/* Mejora la distribución visual de títulos */
 h1,
 h2,
 h3 {
   text-wrap: balance;
 }
 
-/* Mejora la lectura de párrafos */
 p {
   text-wrap: pretty;
 }
 
 /* =========================
-   Estilos generales
+   General layout
    ========================= */
 
-/* Fondo y tipografía principal */
-body {
-   background: linear-gradient(180deg, #9BA79C 15%, #2e3d28 100%);
-  font-family: system-ui, sans-serif;
-}
-
-/* Centra el contenido, pero un poco más abajo */
 main {
   min-height: 92vh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* ya no lo centra exacto verticalmente */
+  justify-content: flex-start;
   align-items: center;
-  gap: 3rem;
-  padding-top: 18rem; /* baja el sobre y los botones */
+  gap: 1rem;
+  padding: clamp(5rem, 17vw, 18rem) 1rem 0.7rem;
 }
 
 /* =========================
-   Contenedor del sobre
+   Envelope container
    ========================= */
 
-/* Ahora el contenedor tiene el mismo ancho y alto real del sobre */
 .container-letter {
+  --envelope-w: min(600px, calc(100vw - 2rem));
+  --envelope-h: calc(var(--envelope-w) * 0.5666666667);
+  --half-w: calc(var(--envelope-w) / 2);
+  --half-h: calc(var(--envelope-h) / 2);
+  --side-offset: calc(var(--envelope-w) * 0.0166666667);
+  --paper-w: calc(var(--envelope-w) - (var(--side-offset) * 2));
+  --paper-h: calc(var(--envelope-h) * 0.8823529412);
+  --paper-top: calc(var(--envelope-h) * 0.0588235294);
+
   position: relative;
-  width: 600px;
-  height: 340px;
+  width: var(--envelope-w);
+  height: var(--envelope-h);
   perspective: 1000px;
 }
 
 .container-letter::before {
   content: "";
   position: absolute;
-  top: 170px;
+  top: var(--half-h);
   left: 0;
-  width: 600px;
-  height: 170px;
+  width: var(--envelope-w);
+  height: var(--half-h);
   background: #93c47d;
   border-top: 4px solid #7d8d76;
   z-index: 0;
 }
 
-/* fondo del sobre */
 .fondo {
   position: absolute;
-  top: 0px;
-  left: 10px;
+  top: 0;
+  left: var(--side-offset);
   z-index: 1;
-
-  width: 580px;
-  height: 300px;
-  padding: 2.5rem;
-
-  font-size: 1.07rem;
+  width: var(--paper-w);
+  height: var(--paper-h);
+  padding: clamp(1rem, 4vw, 2.5rem);
+  font-size: clamp(0.95rem, 1.5vw, 1.07rem);
   line-height: 1.5;
   text-align: left;
-
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  
   background: #759463;
-  border-top: 0px solid #7d8d76;
-  z-index: 1;
+  border-top: 0 solid #7d8d76;
 }
 
-/* Hoja de la carta */
 .paper {
   position: absolute;
-  top: 20px;
-  left: 10px;
+  top: var(--paper-top);
+  left: var(--side-offset);
   z-index: 2;
-
-  width: 580px;
-  height: 300px;
-  padding: 2rem;
+  width: var(--paper-w);
+  height: var(--paper-h);
+  padding: clamp(1rem, 3.8vw, 2rem);
   background-color: white;
-
-  font-size: 1.07rem;
+  font-size: clamp(0.95rem, 1.5vw, 1.07rem);
   line-height: 1.5;
   text-align: left;
-
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-
   box-shadow: 0 4px 12px white;
 }
 
 .paper-title {
   font-family: "Cormorant Garamond", serif;
-  margin: -10px 0 1rem 0; /* space below the title */
-  font-size: 1.4rem;
+  margin: -10px 0 1rem 0;
+  font-size: clamp(1.1rem, 3vw, 1.4rem);
   font-weight: bold;
 }
 
 .paper p {
   font-family: "Cormorant Garamond", serif;
-  font-size: 1.1rem;
+  font-size: clamp(0.95rem, 2.6vw, 1.1rem);
   margin: 0 0 0.4rem 0;
 }
 
-/* Parte inferior del sobre */
 .letter {
   position: absolute;
   top: 0;
   left: 0;
   z-index: 3;
-
-  border-left: 300px solid #93c47d;
-  border-right: 300px solid #93c47d;
-  border-top: 170px solid transparent;
-  border-bottom: 170px solid #90bd79;
+  border-left: var(--half-w) solid #93c47d;
+  border-right: var(--half-w) solid #93c47d;
+  border-top: var(--half-h) solid transparent;
+  border-bottom: var(--half-h) solid #90bd79;
 }
 
-/* Solapa superior del sobre */
 .cover {
   position: absolute;
   top: 0;
   left: 0;
   z-index: 4;
-
-  border-left: 300px solid transparent;
-  border-right: 300px solid transparent;
-  border-top: 170px solid #80aa6d;
-  border-bottom: 170px solid transparent;
-
+  border-left: var(--half-w) solid transparent;
+  border-right: var(--half-w) solid transparent;
+  border-top: var(--half-h) solid #80aa6d;
+  border-bottom: var(--half-h) solid transparent;
   transform-origin: top center;
   transition: transform 0.75s ease;
 }
 
-
 /* =========================
-   Botones
+   Buttons
    ========================= */
 
-/* Contenedor de botones */
 .options {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 5rem;
-  height: 20px;
-  width: 600px; /* mismo ancho que el sobre para que queden centrados */
-  padding-top: 0rem;
+  flex-wrap: wrap;
+  gap: clamp(1rem, 6vw, 4rem);
+  min-height: 20px;
+  width: min(600px, calc(100vw - 2rem));
+  padding-top: 1rem;
 }
 
-/* Estilo base de botones */
 .options button {
   color: #57724b;
   font-weight: 600;
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 2.8vw, 1.2rem);
   font-family: "Cormorant Garamond", serif;
   border-radius: 6px;
   background: #c7dbbd;
@@ -207,52 +187,44 @@ main {
   cursor: pointer;
 }
 
-/* Efecto hover en botones activos */
 .options button:hover:not(:disabled) {
   background: #8eaa80;
   color: white;
   border: 1px solid #8eaa80;
 }
 
-/* Apariencia cuando un botón está deshabilitado */
 .options button:disabled {
   opacity: 0.5;
 }
 
-
 /* =========================
-   Clases de animación
+   Animation classes
    ========================= */
 
-/* Abre la solapa del sobre */
 .open-cover {
   transform: rotateX(180deg);
 }
 
-/* Animación de salida de la hoja */
 .open-paper {
   animation: openPaper 0.9s forwards ease;
 }
 
-/* Hoja saliendo y quedando arriba */
 @keyframes openPaper {
   0% {
     transform: translateY(0);
   }
   100% {
-    transform: translateY(-300px);
+    transform: translateY(calc(var(--envelope-h) * -0.8823529412));
   }
 }
 
-/* Animación para volver a meter la hoja dentro del sobre */
 .close-paper {
   animation: closePaper 0.9s forwards ease;
 }
 
-/* Hoja bajando hasta volver a su posición inicial */
 @keyframes closePaper {
   0% {
-    transform: translateY(-260px);
+    transform: translateY(calc(var(--envelope-h) * -0.7647058824));
   }
   100% {
     transform: translateY(0);
@@ -260,14 +232,14 @@ main {
 }
 
 /* =========================
-   Encabezado
+   Header
    ========================= */
 
 .site-header {
   width: 100%;
   background: linear-gradient(180deg, #9BA79C 15%, #899784 100%);
   backdrop-filter: blur(8px);
-  padding: 1rem 2rem;
+  padding: 1rem clamp(1rem, 4vw, 2rem);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -279,12 +251,14 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 1rem;
 }
 
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 2rem;
+  flex-wrap: wrap;
+  gap: clamp(0.75rem, 3vw, 2rem);
   margin: 0;
   padding: 0;
 }
@@ -292,7 +266,7 @@ main {
 .nav-links a {
   text-decoration: none;
   color: white;
-  font-size: 1.6rem;
+  font-size: clamp(1rem, 2.8vw, 1.6rem);
   font-weight: 500;
   font-family: "Cormorant Garamond", serif;
   transition: 0.3s ease;
@@ -300,4 +274,34 @@ main {
 
 .nav-links a:hover {
   color: #b5cfa0;
+}
+
+@media (max-width: 768px) {
+  main {
+    gap: 2rem;
+    padding-top: 5rem;
+  }
+
+  .nav {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .nav-links {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .container-letter {
+    --envelope-w: min(600px, calc(100vw - 1rem));
+  }
+
+  .paper-title {
+    margin-top: 0;
+  }
+
+  .options button {
+    width: 100%;
+  }
 }
