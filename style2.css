@@ -176,7 +176,7 @@ main {
   left: var(--side-offset);
   z-index: 2;
   width: var(--paper-w);
-  height: var(--paper-h - 4px);
+  height: var(--paper-h);
   padding: var(--paper-pad);
   background-color: white;
   font-size: var(--paper-text-size);
