@@ -309,3 +309,27 @@ main {
     width: 100%;
   }
 }
+
+@media (max-width: 430px) {
+  main {
+    padding-top: calc(9rem + env(safe-area-inset-top));
+    gap: 1.5rem;
+  }
+
+  .container-letter {
+    margin-top: 1.5rem;
+  }
+
+  .open-paper {
+    animation: openPaperMobile 0.9s forwards ease;
+  }
+
+  @keyframes openPaperMobile {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(calc(var(--envelope-h) * -0.68));
+    }
+  }
+}
