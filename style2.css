@@ -329,7 +329,7 @@ main {
     --paper-open-y: calc(var(--envelope-h) * -0.56);
     --paper-pad: clamp(0.85rem, 3.2vw, 1.1rem);
     --paper-title-size: clamp(1.05rem, 0.98rem + 1vw, 1.25rem);
-    --paper-text-size: clamp(0.95rem, 0.6rem + 0.35vw, 1rem);
+    --paper-text-size: clamp(0.95rem, 0.4rem + 0.35vw, 1rem);
   }
 
   .options {
