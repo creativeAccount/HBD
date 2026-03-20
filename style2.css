@@ -320,6 +320,9 @@ main {
     margin-top: 1.5rem;
   }
 
+  .paper {
+    font-size: clamp(0.95rem, 1.3vw, 1.07rem);
+  }
   .open-paper {
     animation: openPaperMobile 0.9s forwards ease;
   }
