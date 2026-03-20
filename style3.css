@@ -112,7 +112,6 @@ main {
 .nav-links a:hover {
   color: #b5cfa0;
 }
-
 /* =========================
    Text blocks
    ========================= */
@@ -154,13 +153,12 @@ main {
 }
 
 @media (max-width: 768px) {
-  .nav {
-    flex-direction: column;
-    justify-content: right;
+  .nav-links {
+    gap: 0.75rem;
   }
 
-  .nav-links {
-    justify-content: right;
+  .nav-links a {
+    font-size: 0.98rem;
   }
 
   main {
