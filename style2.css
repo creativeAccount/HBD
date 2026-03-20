@@ -279,7 +279,7 @@ main {
 @media (max-width: 768px) {
   main {
     gap: 2rem;
-    padding-top: 9rem;
+    padding-top: 5rem;
   }
 
   .nav {
@@ -295,6 +295,10 @@ main {
 @media (max-width: 480px) {
   .container-letter {
     --envelope-w: min(600px, calc(100vw - 1rem));
+  }
+  main {
+    gap: 1.5rem;
+    padding-top: 3rem;
   }
 
   .paper-title {
