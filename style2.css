@@ -339,7 +339,7 @@ main {
 
 @media (max-width: 430px) {
   :root {
-    --paper-open-y: calc(var(--envelope-h) * -0.52);
+    --paper-open-y: calc(var(--envelope-h) * -0.8);
   }
 
   main {
